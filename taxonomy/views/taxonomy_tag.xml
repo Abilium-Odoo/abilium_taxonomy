@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="taxonomy.taxonomy_tag_tree">
+            <field name="name">taxonomy.taxonomy_tag_tree</field>
+            <field name="model">taxonomy.tag</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="parent_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="taxonomy.taxonomy_tag_form">
+            <field name="name">taxonomy.taxonomy_tag_form</field>
+            <field name="model">taxonomy.tag</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="parent_id" />
+                            </group>
+                        </group>
+
+                        <notebook groups="base.group_no_one">
+                            <page name="all_parents" string="All Parent Tags">
+                                <field name="all_parent_ids" nolabel="1" mode="tree" />
+                            </page>
+                            <page name="all_childs" string="All Child Tags">
+                                <field name="all_child_ids" nolabel="1" mode="tree" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="taxonomy.taxonomy_tag_action_window">
+            <field name="name">Taxonomy Tag</field>
+            <field name="res_model">taxonomy.tag</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+        </record>
+    </data>
+</odoo>
