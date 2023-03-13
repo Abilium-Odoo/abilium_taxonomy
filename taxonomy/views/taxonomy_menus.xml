@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="taxonomy.taxonomy_menu_root"
+                  name="Taxonomy"
+                  sequence="30">
+
+            <menuitem id="taxonomy.taxonomy_menu_tag"
+                      name="Tags"
+                      sequence="10"
+                      action="taxonomy.taxonomy_tag_action_window"/>
+        </menuitem>
+    </data>
+</odoo>

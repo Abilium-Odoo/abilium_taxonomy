@@ -1,0 +1,6 @@
+.idea/
+.vscode
+.gimp/
+
+__pycache__/
+*.py[cod]
