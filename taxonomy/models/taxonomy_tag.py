@@ -20,6 +20,17 @@ class TaxonomyTag(models.Model):
     all_child_ids = fields.Many2many('taxonomy.tag', string='All Child Tags', readonly=True,
                                      relation='all_parent_child_tag_rel', column1='parent_id', column2='child_id')
 
+    def name_get(self):
+        res = []
+        for record in self:
+            name = record.name
+            parent = record.parent_id
+            while parent:
+                name = f'{parent.name} > {name}'
+                parent = parent.parent_id
+            res.append((record.id, name))
+        return res
+
     @api.depends('parent_id', 'parent_id.all_parent_ids')
     def _compute_all_parent_ids(self):
         _logger.info(f'compute all parent ids for tags {self}')
