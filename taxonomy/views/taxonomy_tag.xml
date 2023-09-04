@@ -18,10 +18,12 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                        <widget name="web_ribbon" title="Archiviert" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
                         <group>
                             <group>
                                 <field name="name" />
                                 <field name="parent_id" />
+                                <field name="active" invisible="1" />
                             </group>
                         </group>
 
@@ -35,6 +37,19 @@
                         </notebook>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="taxonomy.taxonomy_tag_search">
+            <field name="name">taxonomy.taxonomy_tag_search</field>
+            <field name="model">taxonomy.tag</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+                    <field name="parent_id" />
+
+                    <filter name="active" string="Archiviert" domain="[('active', '=', False)]" />
+                </search>
             </field>
         </record>
 

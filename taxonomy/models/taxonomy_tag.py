@@ -11,6 +11,7 @@ class TaxonomyTag(models.Model):
     _description = 'Taxonomy Tag'
 
     name = fields.Char(string='Name', required=True, index=True)
+    active = fields.Boolean(string='Archiviert', default=True)
     parent_id = fields.Many2one('taxonomy.tag', string='Parent')
 
     all_parent_ids = fields.Many2many('taxonomy.tag', string='All Parent Tags', compute='_compute_all_parent_ids',
