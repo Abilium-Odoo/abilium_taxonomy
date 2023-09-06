@@ -12,6 +12,7 @@ class TaxonomyTag(models.Model):
     _description = 'Taxonomy Tag'
 
     name = fields.Char(string='Name', required=True, index=True)
+    active = fields.Boolean(string='Archiviert', default=True)
     parent_id = fields.Many2one('taxonomy.tag', string='Parent')
     systemtag = fields.Boolean(string='System Tag', default=False, help='System Tags können nicht gelöscht werden.')
 
