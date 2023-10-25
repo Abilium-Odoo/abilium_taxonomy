@@ -42,6 +42,5 @@ class TaxonomyTag(models.Model):
 
     @api.depends('parent_id', 'parent_id.all_parent_ids')
     def _compute_all_parent_ids(self):
-        _logger.info(f'compute all parent ids for tags {self}')
         for record in self:
             record.all_parent_ids = record.parent_id + record.parent_id.all_parent_ids
