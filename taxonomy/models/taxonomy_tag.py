@@ -11,10 +11,12 @@ class TaxonomyTag(models.Model):
     _name = 'taxonomy.tag'
     _description = 'Taxonomy Tag'
 
-    name = fields.Char(string='Name', required=True, index=True)
+    name = fields.Char(string='Name', required=True,
+                       index=True, translate=True)
     active = fields.Boolean(string='Archiviert', default=True)
     parent_id = fields.Many2one('taxonomy.tag', string='Parent')
-    systemtag = fields.Boolean(string='System Tag', default=False, help='System Tags können nicht gelöscht werden.')
+    systemtag = fields.Boolean(
+        string='System Tag', default=False, help='System Tags können nicht gelöscht werden.')
 
     all_parent_ids = fields.Many2many('taxonomy.tag', string='All Parent Tags', compute='_compute_all_parent_ids',
                                       relation='all_parent_child_tag_rel', column1='child_id', column2='parent_id',
@@ -26,7 +28,8 @@ class TaxonomyTag(models.Model):
         systemtags = self.filtered(lambda r: r.systemtag)
         if systemtags:
             tag_names = '\n'.join([f'- {tag.name}' for tag in systemtags])
-            raise ValidationError(f'Folgende Tags sind System Tags und können deshalb nicht gelöscht werden:\n{tag_names}')
+            raise ValidationError(
+                f'Folgende Tags sind System Tags und können deshalb nicht gelöscht werden:\n{tag_names}')
         return super().unlink()
 
     def name_get(self):
