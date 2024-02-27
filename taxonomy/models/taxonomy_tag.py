@@ -35,6 +35,8 @@ class TaxonomyTag(models.Model):
     def name_get(self):
         res = []
         for record in self:
+            _logger.info("name get taxonomy %s" % record.name)
+
             name = record.name
             parent = record.parent_id
             while parent:
