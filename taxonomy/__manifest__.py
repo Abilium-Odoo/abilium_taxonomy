@@ -14,7 +14,7 @@
     'website': "https://www.abilium.io",
 
     'category': 'Uncategorized',
-    'version': '0.1',
+    'version': '17.0.1.0',
     'application': False,
 
     'depends': [
