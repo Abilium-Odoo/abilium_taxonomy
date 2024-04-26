@@ -1,59 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record model="ir.ui.view" id="taxonomy.taxonomy_tag_tree">
+        <record id="taxonomy.taxonomy_tag_tree" model="ir.ui.view">
             <field name="name">taxonomy.taxonomy_tag_tree</field>
             <field name="model">taxonomy.tag</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name" />
-                    <field name="parent_id" />
-                </tree>
-            </field>
+                    <field name="name"/>
+                    <field name="parent_id"/>
+                </tree></field>
         </record>
-
-        <record model="ir.ui.view" id="taxonomy.taxonomy_tag_form">
+        <record id="taxonomy.taxonomy_tag_form" model="ir.ui.view">
             <field name="name">taxonomy.taxonomy_tag_form</field>
             <field name="model">taxonomy.tag</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <widget name="web_ribbon" title="Archiviert" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <widget bg_color="bg-danger" invisible="active == True" name="web_ribbon" title="Archiviert"/>
                         <group>
                             <group>
-                                <field name="name" />
-                                <field name="parent_id" />
-                                <field name="active" invisible="1" />
+                                <field name="name"/>
+                                <field name="parent_id"/>
+                                <field invisible="1" name="active"/>
                             </group>
                         </group>
-
                         <notebook groups="base.group_no_one">
                             <page name="all_parents" string="All Parent Tags">
-                                <field name="all_parent_ids" nolabel="1" mode="tree" />
+                                <field mode="tree" name="all_parent_ids" nolabel="1"/>
                             </page>
                             <page name="all_childs" string="All Child Tags">
-                                <field name="all_child_ids" nolabel="1" mode="tree" />
+                                <field mode="tree" name="all_child_ids" nolabel="1"/>
                             </page>
                         </notebook>
                     </sheet>
-                </form>
-            </field>
+                </form></field>
         </record>
-
-        <record model="ir.ui.view" id="taxonomy.taxonomy_tag_search">
+        <record id="taxonomy.taxonomy_tag_search" model="ir.ui.view">
             <field name="name">taxonomy.taxonomy_tag_search</field>
             <field name="model">taxonomy.tag</field>
             <field name="arch" type="xml">
                 <search>
-                    <field name="name" />
-                    <field name="parent_id" />
-
-                    <filter name="active" string="Archiviert" domain="[('active', '=', False)]" />
-                </search>
-            </field>
+                    <field name="name"/>
+                    <field name="parent_id"/>
+                    <filter domain="[('active', '=', False)]" name="active" string="Archiviert"/>
+                </search></field>
         </record>
-
-        <record model="ir.actions.act_window" id="taxonomy.taxonomy_tag_action_window">
+        <record id="taxonomy.taxonomy_tag_action_window" model="ir.actions.act_window">
             <field name="name">Taxonomy Tag</field>
             <field name="res_model">taxonomy.tag</field>
             <field name="view_mode">tree,form</field>
