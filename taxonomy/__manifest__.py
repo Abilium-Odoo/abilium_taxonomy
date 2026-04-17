@@ -14,7 +14,8 @@
     'website': "https://www.abilium.io",
 
     'category': 'Uncategorized',
-    'version': '0.1',
+    'version': '19.0.1.0',
+    'license': 'LGPL-3',
     'application': False,
 
     'depends': [

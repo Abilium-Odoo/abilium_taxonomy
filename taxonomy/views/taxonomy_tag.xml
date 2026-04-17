@@ -5,11 +5,10 @@
             <field name="name">taxonomy.taxonomy_tag_tree</field>
             <field name="model">taxonomy.tag</field>
             <field name="arch" type="xml">
-                <tree>
-                    <field name="name" />
-                    <field name="parent_id" />
-                </tree>
-            </field>
+                <list>
+                    <field name="name"/>
+                    <field name="parent_id"/>
+                </list></field>
         </record>
 
         <record model="ir.ui.view" id="taxonomy.taxonomy_tag_form">
@@ -29,10 +28,10 @@
 
                         <notebook groups="base.group_no_one">
                             <page name="all_parents" string="All Parent Tags">
-                                <field name="all_parent_ids" nolabel="1" mode="tree" />
+                                <field mode="list" name="all_parent_ids" nolabel="1"/>
                             </page>
                             <page name="all_childs" string="All Child Tags">
-                                <field name="all_child_ids" nolabel="1" mode="tree" />
+                                <field mode="list" name="all_child_ids" nolabel="1"/>
                             </page>
                         </notebook>
                     </sheet>
@@ -56,7 +55,7 @@
         <record model="ir.actions.act_window" id="taxonomy.taxonomy_tag_action_window">
             <field name="name">Taxonomy Tag</field>
             <field name="res_model">taxonomy.tag</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="domain">[]</field>
         </record>
     </data>
